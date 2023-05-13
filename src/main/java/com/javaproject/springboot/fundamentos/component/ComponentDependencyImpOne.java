@@ -2,6 +2,7 @@ package com.javaproject.springboot.fundamentos.component;
 
 import org.springframework.stereotype.Component;
 
+
 @Component
 public class ComponentDependencyImpOne implements ComponentDependency{
     @Override
