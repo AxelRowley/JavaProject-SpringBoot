@@ -22,11 +22,11 @@ public class FundamentosApplication implements CommandLineRunner {
 	/*
 	Inyeccion de dependecias
 	 */
-	public FundamentosApplication(@Qualifier("componentDependencyImpTwo") ComponentDependency comDep, MyBean myBean, MyBeanWithDependency myBeanWithDependency, MyBeanWithProperties myBeanWithProperties) {
+	public FundamentosApplication(@Qualifier("componentDependencyImpTwo") ComponentDependency comDep, MyBean myBean, MyBeanWithDependency myBeanWithDependency/*, MyBeanWithProperties myBeanWithProperties*/) {
 		this.compDependency = comDep;
 		this.myBean = myBean;
 		this.myBeanWithDep = myBeanWithDependency;
-		this.myBeanWithProperties = myBeanWithProperties;
+		//this.myBeanWithProperties = myBeanWithProperties;
 	}
 
 	public static void main(String[] args) {
@@ -38,6 +38,8 @@ public class FundamentosApplication implements CommandLineRunner {
 		compDependency.saludar();
 		myBean.imprimir();
 		myBeanWithDep.printWithDependency();
-		System.out.println(myBeanWithProperties.function());;
+		System.out.println(myBeanWithProperties.function());
 	}
+
+	//test http://localhost:8081/app/home for view the page.
 }
