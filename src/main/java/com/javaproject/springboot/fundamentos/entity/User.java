@@ -16,13 +16,12 @@ public class User {
     @Column(name = "id_user", nullable = false,unique = true)
     private Long id;
 
-    @Column(name = "name", length = 50)
+    @Column(length = 50)
     private String name;
 
-    @Column(name = "email", length = 50)
+    @Column(length = 50)
     private String email;
 
-    @Column(name = "birth_date", length = 50)
     private LocalDate birthDate;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
