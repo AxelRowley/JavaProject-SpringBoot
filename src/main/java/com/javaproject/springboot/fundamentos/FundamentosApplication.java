@@ -29,7 +29,8 @@ public class FundamentosApplication implements CommandLineRunner {
 	private ComponentDependency compDependency;
 	private MyBean myBean;
 	private MyBeanWithDependency myBeanWithDep;
-	@Autowired
+
+	//@Autowired
 	private MyBeanWithProperties myBeanWithProperties;
 	private UserPojo userPojo;
 	private UserRepository userRepository;
@@ -40,15 +41,15 @@ public class FundamentosApplication implements CommandLineRunner {
 	 */
 	public FundamentosApplication(@Qualifier("componentDependencyImpTwo") ComponentDependency comDep,
 								  MyBean myBean,
-								  MyBeanWithDependency myBeanWithDependency
-			/*, MyBeanWithProperties myBeanWithProperties*/,
+								  MyBeanWithDependency myBeanWithDependency,
+								  MyBeanWithProperties myBeanWithProp,
 								  UserPojo userPojo,
 								  UserRepository userRepository,
 								  UserService userService) {
 		this.compDependency = comDep;
 		this.myBean = myBean;
 		this.myBeanWithDep = myBeanWithDependency;
-		//this.myBeanWithProperties = myBeanWithProperties;
+		this.myBeanWithProperties = myBeanWithProp;
 		this.userPojo = userPojo;
 		this.userRepository = userRepository;
 		this.userService = userService;
@@ -147,7 +148,7 @@ public class FundamentosApplication implements CommandLineRunner {
 		User testTransact4 = new User("test4", "test4@domain.com", LocalDate.of(2000,4,8));
 		User testTransact5 = new User("test5", "test5@domain.com", LocalDate.of(2000,5,10));
 		User testTransact6 = new User("test6", "test6@domain.com", LocalDate.of(2000,6,12));
-		User testTransact7 = new User("test7", "test1@domain.com", LocalDate.of(2000,7,14));
+		User testTransact7 = new User("test7", "test7@domain.com", LocalDate.of(2000,7,14));
 
 		List<User> userss = Arrays.asList(testTransact1,testTransact2,testTransact3,testTransact4,testTransact5,testTransact6,testTransact7);
 

@@ -12,21 +12,41 @@ import java.util.List;
 @Service
 public class UserService {
     private final Log LOG = LogFactory.getLog(UserService.class);
-    private UserRepository userRepositoryDepend;
+    private UserRepository userRepositoryDep;
 
     public UserService(UserRepository userRepositoryDepend) {
-        this.userRepositoryDepend = userRepositoryDepend;
+        this.userRepositoryDep = userRepositoryDepend;
     }
 
     @Transactional
     public void saveTransactional(List<User> users) {
         users.stream()
                 .peek(user -> LOG.info("Usuario insertado: " + user))
-                .forEach(userRepositoryDepend::save);
+                .forEach(userRepositoryDep::save);
                 //.forEach(user -> userRepositoryDepend.save(user));
     }
 
     public List<User> getAllUsers() {
-        return userRepositoryDepend.findAll();
+        return userRepositoryDep.findAll();
+    }
+
+    public User save(User newUser) {
+        return userRepositoryDep.save(newUser);
+    }
+
+    public void delete(Long id) {
+        userRepositoryDep.delete(new User(id));
+    }
+
+    public User update(User newUser, Long id) {
+        return userRepositoryDep.findById(id)
+                .map(
+                        user -> {
+                            user.setEmail(newUser.getEmail());
+                            user.setBirthDate(newUser.getBirthDate());
+                            user.setName(newUser.getName());
+                            return userRepositoryDep.save(user);
+                        }
+                ).orElse(null);
     }
 }

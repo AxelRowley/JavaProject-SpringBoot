@@ -1,5 +1,6 @@
 package com.javaproject.springboot.fundamentos.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
